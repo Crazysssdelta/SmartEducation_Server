@@ -1,0 +1,38 @@
+### test getallclasses
+
+GET http://localhost:8080/class/getAll
+Accept: application/json
+
+### test selectById
+GET http://localhost:8080/class/selectById/101
+Accept: application/json
+
+### add Student
+POST http://localhost:8080/student/add
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 7,
+  "name": "张三",
+  "email": "zh@example.com",
+  "classId": 102
+}
+
+
+### 新增任务
+POST http://localhost:8080/task/add
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 667,
+  "title": "完成软件工程报告",
+  "content": "撰写项目总结与展示PPT",
+  "classId": 110,
+  "dueDate": "2025-07-08"
+}
+
+### 获取所有任务列表
+GET http://localhost:8080/task/getAll
+Accept: application/json

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smartedu.mapper.TaskMapper">
+
+    <!-- 查询：获取所有任务 -->
+    <select id="getAllTasks" resultType="com.smartedu.entity.Task">
+        SELECT * FROM tasks
+    </select>
+
+    <!-- 查询：按 ID 查询任务 -->
+    <select id="selectById" parameterType="long" resultType="com.smartedu.entity.Task">
+        SELECT * FROM tasks WHERE id = #{id}
+    </select>
+
+    <!-- 插入任务 -->
+    <insert id="insert" parameterType="com.smartedu.entity.Task" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tasks (id,title, content, "classId", "dueDate")
+        VALUES (#{id},#{title}, #{content}, #{classId}, #{dueDate})
+    </insert>
+
+    <!-- 更新任务 -->
+    <update id="update" parameterType="com.smartedu.entity.Task">
+        UPDATE tasks
+        SET title = #{title},
+            content = #{content},
+            "classId" = #{classId},
+            "dueDate" = #{dueDate}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除任务 -->
+    <delete id="deleteById" parameterType="long">
+        DELETE FROM tasks WHERE id = #{id}
+    </delete>
+
+</mapper>
